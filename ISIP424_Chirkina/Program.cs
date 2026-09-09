@@ -12,6 +12,15 @@ namespace ISIP424_Chirkina
         {
             Dictionary<string, double> Spisok = new Dictionary<string, double>();
             int n;
+            do
+            {
+                Console.WriteLine("Введите кол-во операций от 2 до 40: ");
+                n = Convert.ToInt32(Console.ReadLine());
+            } while (n < 2 || n > 40);
+
+            string[] names = new string[n];
+            double[] prices = new double[n];
+
 
 
             //меню
