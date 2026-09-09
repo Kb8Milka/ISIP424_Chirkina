@@ -26,7 +26,7 @@ namespace ISIP424_Chirkina
                 Console.WriteLine("Введите название услуги или товара: ");
                 names[i] = Console.ReadLine();
 
-                Console.WriteLine("Введите название услуги или товара: ");
+                Console.WriteLine("Введите Цену: ");
                 prices[i] = Convert.ToDouble(Console.ReadLine());
             }
 
@@ -35,7 +35,7 @@ namespace ISIP424_Chirkina
             while (choice != 0)
             {
                 Console.WriteLine();
-                Console.WriteLine("меню:");
+                Console.WriteLine("     МЕНЮ:   ");
                 Console.WriteLine("1. Вывод данных");
                 Console.WriteLine("2. Статистика");
                 Console.WriteLine("3. Сортировка по цене");
@@ -53,7 +53,7 @@ namespace ISIP424_Chirkina
                         Console.WriteLine("Все расходы: ");
                         for (int i = 0; i < n; i++)
                         {
-                            Console.WriteLine(names[i] + "-" + prices + "руб");
+                            Console.WriteLine(names[i] + " " + prices[i] + " руб");
                         }
                         break;
                     case 2:
