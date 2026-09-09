@@ -21,7 +21,14 @@ namespace ISIP424_Chirkina
             string[] names = new string[n];
             double[] prices = new double[n];
 
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine("Введите название услуги или товара: ");
+                names[i] = Console.ReadLine();
 
+                Console.WriteLine("Введите название услуги или товара: ");
+                prices[i] = Convert.ToDouble(Console.ReadLine());
+            }
 
             //меню
             int choice = 0;
@@ -66,8 +73,11 @@ namespace ISIP424_Chirkina
 
                         break;
                     case 0:
-                        Console.WriteLine();
+                        Console.WriteLine("Программа завершена, Босс");
+                        break;
 
+                    default: 
+                        Console.WriteLine("Такого выбора нет :( ");
                         break;
                 }
             }
