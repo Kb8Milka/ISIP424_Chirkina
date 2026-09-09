@@ -10,21 +10,9 @@ namespace ISIP424_Chirkina
     {
         static void Main(string[] args)
         {
-            int n;
             Dictionary<string, double> Spisok = new Dictionary<string, double>();
+            int n;
 
-            if (Spisok.Count == 2)
-            {
-                string name = Console.ReadLine();
-            }
-            else if (Spisok.Count <= 40)
-            {
-                Console.WriteLine("Значение не принято");
-            }
-            else
-            {
-                Console.WriteLine("Значение не принято");
-            }
 
             //меню
             int choice = 0;
