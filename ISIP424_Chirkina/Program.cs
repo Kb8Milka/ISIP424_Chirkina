@@ -31,7 +31,7 @@ namespace ISIP424_Chirkina
             }
 
             //меню
-            int choice = 0;
+            int choice = -1;
             while (choice != 0)
             {
                 Console.WriteLine();
@@ -51,7 +51,10 @@ namespace ISIP424_Chirkina
                     case 1:
                         Console.WriteLine();
                         Console.WriteLine("Все расходы: ");
-
+                        for (int i = 0; i < n; i++)
+                            {
+                            Console.WriteLine(names[i] + "-" + prices + "руб");
+                        }
                         break;
                     case 2:
                         Console.WriteLine();
