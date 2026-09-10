@@ -48,6 +48,7 @@ namespace ISIP424_Chirkina
                 Console.WriteLine("Выберете пункт: ");
                 choice = Convert.ToInt32(Console.ReadLine());
 
+                // выбор
                 switch (choice)
                 {
                     case 1:
