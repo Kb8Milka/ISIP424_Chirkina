@@ -10,6 +10,7 @@ namespace ISIP424_Chirkina
     {
         static void Main(string[] args)
         {
+            // ввод операций
             Dictionary<string, double> Spisok = new Dictionary<string, double>();
             int n;
             do
@@ -18,6 +19,7 @@ namespace ISIP424_Chirkina
                 n = Convert.ToInt32(Console.ReadLine());
             } while (n < 2 || n > 40);
 
+            // ввол данных
             string[] names = new string[n];
             double[] prices = new double[n];
 
@@ -56,25 +58,86 @@ namespace ISIP424_Chirkina
                             Console.WriteLine(names[i] + " " + prices[i] + " руб");
                         }
                         break;
+
                     case 2:
                         Console.WriteLine();
                         Console.WriteLine("Статистика: ");
+                        double sum = 0;
+                        double max = prices[0];
+                        double min = prices[0];
 
+                        for (int i = 0; i < n; i++)
+                        {
+                            sum = sum + prices[i];
+                            if (prices[i] > max)
+                            {
+                                max = prices[i];
+                            }
+                            if (prices[i] < min)
+                            {
+                                min = prices[i];
+                            }
+                        }
+
+                        double srednee = sum / n;
+                        Console.WriteLine("Среднее: " + srednee);
+                        Console.WriteLine("Максимум: " + max);
+                        Console.WriteLine("Минимум: " + min);
+                        Console.WriteLine("Сумма: " + sum);
                         break;
+
                     case 3:
                         Console.WriteLine();
                         Console.WriteLine("Отсортированные по цене: ");
+                        break;
 
-                        break;
                     case 4:
+                        Spisok.Add("USD", 80);
+                        Spisok.Add("EUR", 95);
+                        Spisok.Add("CNY", 11);
+
                         Console.WriteLine();
-                        Console.WriteLine("Выбор валюты: ");
+                        Console.WriteLine("Доступные валюты:");
+
+                        foreach (string key in Spisok.Keys)
+                        {
+                            Console.WriteLine(key + " - курс " + Spisok[key]);
+                        }
+
+                        Console.WriteLine();
+                        Console.Write("Введите валюту: ");
+                        string selectedSpisok = Console.ReadLine().ToUpper();
+
+                        if (Spisok.ContainsKey(selectedSpisok))
+                        {
+                            double rate = Spisok[selectedSpisok];
+
+                            Console.WriteLine();
+                            Console.WriteLine("Расходы в " + selectedSpisok + ":");
+
+                            for (int i = 0; i < n; i++)
+                            {
+                                double result = prices[i] / rate;
+
+                                Console.WriteLine(
+                                    names[i] + " - " +
+                                    result.ToString("F2") + " " +
+                                    selectedSpisok
+                                );
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Такой валюты нет.");
+                        }
                         break;
+
                     case 5:
                         Console.WriteLine();
                         Console.WriteLine("Введите название: ");
 
                         break;
+
                     case 0:
                         Console.WriteLine("Программа завершена, Босс");
                         break;
