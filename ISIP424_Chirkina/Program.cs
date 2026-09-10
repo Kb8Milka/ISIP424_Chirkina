@@ -88,7 +88,29 @@ namespace ISIP424_Chirkina
 
                     case 3:
                         Console.WriteLine();
-                        Console.WriteLine("Отсортированные по цене: ");
+                        for (int i = 0; i < n - 1; i++)
+                        {
+                            for (int j = 0; j < n - 1; j++)
+                            {
+                                if (prices[j] > prices[j + 1])
+                                {
+                                    double temp = prices[j];
+                                    prices[j] = prices[j + 1];
+                                    prices[j + 1] = temp;
+
+                                    string tempName = names[j];
+                                    names[j] = names[j + 1];
+                                    names[j + 1] = tempName;
+                                }
+                            }
+                        }
+
+                        Console.WriteLine("Расходы отсортированы:");
+                        for (int i = 0; i < n; i++)
+                        {
+                            Console.WriteLine(names[i] + " - " + prices[i] + " руб.");
+                        }
+
                         break;
 
                     case 4:
@@ -134,7 +156,24 @@ namespace ISIP424_Chirkina
 
                     case 5:
                         Console.WriteLine();
-                        Console.WriteLine("Введите название: ");
+                        Console.Write("Введите название: ");
+                        string search = Console.ReadLine();
+
+                        bool found = false;
+
+                        for (int i = 0; i < n; i++)
+                        {
+                            if (names[i] == search)
+                            {
+                                Console.WriteLine(names[i] + " - " + prices[i] + " руб.");
+                                found = true;
+                            }
+                        }
+
+                        if (found == false)
+                        {
+                            Console.WriteLine("Ничего не найдено.");
+                        }
 
                         break;
 
