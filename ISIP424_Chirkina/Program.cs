@@ -117,7 +117,7 @@ namespace ISIP424_Chirkina
                     case 4:
                         Spisok.Add("USD", 80);
                         Spisok.Add("EUR", 95);
-                        Spisok.Add("CNY", 11);
+                        Spisok.Add("UAH", 1.89);
 
                         Console.WriteLine();
                         Console.WriteLine("Доступные валюты:");
