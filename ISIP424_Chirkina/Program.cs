@@ -10,6 +10,44 @@ namespace ISIP424_Chirkina
     {
         static void Main(string[] args)
         {
+            List<Thing> products = new List<Thing>();
+
+            // Список продуктов:
+            Thing Apple = new Thing()
+            {
+                ID = 1001,
+                name = "Яблоко",
+                cost = 120,
+                kolvo = 10,
+                nalichie = 1,
+                category = "Продукты"
+            };
+
+            Thing Banan = new Thing()
+            {
+                ID = 1002,
+                name = "Банан",
+                cost = 100,
+                kolvo = 15,
+                nalichie = 1,
+                category = "Продукты"
+            };
+
+            Thing Shirt = new Thing()
+            {
+                ID = 1003,
+                name = "Футболка",
+                cost = 1200,
+                kolvo = 3,
+                nalichie = 1,
+                category = "Одежда"
+            };
+
+            products.Add(Apple);
+            products.Add(Banan);
+            products.Add(Shirt);
+
+            // Меню
             int choice = -1;
             while (choice != 0)
             {
@@ -78,6 +116,14 @@ namespace ISIP424_Chirkina
 
                         break;
 
+                    case 6:
+                        //Вывод всех товаров
+                        foreach (Thing product in products)
+                        {
+                            Console.WriteLine(product.ID + product.name + product.cost);
+                        }
+                        break;
+
                     case 0:
                         Console.WriteLine("Программа завершена, Босс");
                         break;
@@ -88,15 +134,15 @@ namespace ISIP424_Chirkina
                 }
             }
         }
+    }
 
-        class Thing
-        {
-            public int ID;
-            public string name;
-            public int cost;
-            public int kolvo;
-            public int nalichie;
-            public string category;
-        }
+    class Thing
+    {
+        public int ID;
+        public string name;
+        public int cost;
+        public int kolvo;
+        public int nalichie;
+        public string category;
     }
 }
