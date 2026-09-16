@@ -32,6 +32,7 @@ namespace ISIP424_Chirkina
             tovary.Add(new Thing(ID++, "Наушники", 2500, 0, Kategoriya.Электроника));
             tovary.Add(new Thing(ID++, "Микроволновка", 7000, 2, Kategoriya.БытоваяТехника));
 
+            //меню
             int choice = -1;
             while (choice != 0)
             {
@@ -66,20 +67,20 @@ namespace ISIP424_Chirkina
                         }
 
                         int newCost;
-                        try
-                        {
-                            Console.Write("Введите цену: ");
-                            newCost = Convert.ToInt32(Console.ReadLine());
+                        if (int.TryParse(newName <= 0) {
+                            Console.WriteLine("Цена не может быть отрицательной!");
+                            break;
                         }
-                        catch
+                        else if (int.TryParse(newName,
                         {
                             Console.WriteLine("Цена должна быть числом!");
                             break;
                         }
-                        if (newCost < 0)
+                        else (newCost < 0)
                         {
-                            Console.WriteLine("Цена не может быть отрицательной!");
-                            break;
+                            Console.Write("Введите цену: ");
+                            newCost = Convert.ToInt32(Console.ReadLine());
+                            
                         }
 
                         int newKolvo;
