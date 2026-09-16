@@ -167,7 +167,7 @@ namespace ISIP424_Chirkina
                         else
                         {
                             tovary.Remove(delThing);
-                            Console.WriteLine("Товар \"" + delThing.name + "\" удалён!");
+                            Console.WriteLine("Товар " + delThing.name + " удалён!");
                         }
                         break;
 
