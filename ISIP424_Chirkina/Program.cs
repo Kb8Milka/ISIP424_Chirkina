@@ -135,11 +135,11 @@ namespace ISIP424_Chirkina
 
                         Console.Write("Введите код товара, который хотите удалить: ");
                         int delID;
-                        try
+                        if (int.TryParse(newName,out delID)
                         {
                             delID = Convert.ToInt32(Console.ReadLine());
                         }
-                        catch
+                        else
                         {
                             Console.WriteLine("Код должен быть числом!");
                             break;
