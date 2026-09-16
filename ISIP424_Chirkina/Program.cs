@@ -84,20 +84,21 @@ namespace ISIP424_Chirkina
                         }
 
                         int newKolvo;
-                        try
+                        if ()
                         {
-                            Console.Write("Введите количество: ");
-                            newKolvo = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Количество не может быть отрицательным!");
+                            break;
                         }
-                        catch
+                        else if (!int.TryParse(newName,)
                         {
                             Console.WriteLine("Количество должно быть числом!");
                             break;
                         }
-                        if (newKolvo < 0)
+                        else (newKolvo < 0)
                         {
-                            Console.WriteLine("Количество не может быть отрицательным!");
-                            break;
+                            Console.Write("Введите количество: ");
+                            newKolvo = Convert.ToInt32(Console.ReadLine());
+                            
                         }
 
                         Console.WriteLine("Выберите категорию:");
@@ -107,19 +108,19 @@ namespace ISIP424_Chirkina
                         Console.WriteLine("4. Бытовая техника");
 
                         int katChoice;
-                        try
-                        {
-                            katChoice = Convert.ToInt32(Console.ReadLine());
+                        if (int.TryParse(newName, out katChoice)
+{
+                            Console.WriteLine("Такой категории нет!");
+                            break;
                         }
-                        catch
+                        else if ((newKolvo < 0)
                         {
                             Console.WriteLine("Нужно ввести число!");
                             break;
                         }
-                        if (katChoice < 1 || katChoice > 4)
+                        else (katChoice < 1 || katChoice > 4)
                         {
-                            Console.WriteLine("Такой категории нет!");
-                            break;
+                            katChoice = Convert.ToInt32(Console.ReadLine());
                         }
                         Kategoriya newKat = (Kategoriya)(katChoice - 1);
 
