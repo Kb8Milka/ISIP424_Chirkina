@@ -201,7 +201,7 @@ namespace ISIP424_Chirkina
                         if ()
                         {
                             Console.Write("Сколько нужно товара: ");
-                            postKolvo = Convert.ToInt32(Console.ReadLine());
+                            postKolvo = Convert.TryParse(Console.ReadLine());
                         }
                         else
                         {
