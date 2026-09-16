@@ -6,53 +6,37 @@ using System.Threading.Tasks;
 
 namespace ISIP424_Chirkina
 {
+    // Перечисление категорий (минимум 3, я сделал 4)
+    enum Kategoriya
+    {
+        Продукты,
+        Одежда,
+        Электроника,
+        БытоваяТехника
+    }
+
     internal class Program
     {
+        // Список всех товаров магазина
+        static List<Thing> tovary = new List<Thing>();
+
+        // Счётчик для уникального кода. Начинается с 1. 
+        static int ID = 1;
+
         static void Main(string[] args)
         {
-            List<Thing> products = new List<Thing>();
+            // Пять тестовых товаров
+            tovary.Add(new Thing(ID++, "Хлеб", 50, 10, Kategoriya.Продукты));
+            tovary.Add(new Thing(ID++, "Молоко", 80, 5, Kategoriya.Продукты));
+            tovary.Add(new Thing(ID++, "Футболка", 1200, 3, Kategoriya.Одежда));
+            tovary.Add(new Thing(ID++, "Наушники", 2500, 0, Kategoriya.Электроника));
+            tovary.Add(new Thing(ID++, "Микроволновка", 7000, 2, Kategoriya.БытоваяТехника));
 
-            // Список продуктов:
-            Thing Apple = new Thing()
-            {
-                ID = 1001,
-                name = "Яблоко",
-                cost = 120,
-                kolvo = 10,
-                nalichie = 1,
-                category = "Продукты"
-            };
-
-            Thing Banan = new Thing()
-            {
-                ID = 1002,
-                name = "Банан",
-                cost = 100,
-                kolvo = 15,
-                nalichie = 1,
-                category = "Продукты"
-            };
-
-            Thing Shirt = new Thing()
-            {
-                ID = 1003,
-                name = "Футболка",
-                cost = 1200,
-                kolvo = 3,
-                nalichie = 1,
-                category = "Одежда"
-            };
-
-            products.Add(Apple);
-            products.Add(Banan);
-            products.Add(Shirt);
-
-            // Меню
             int choice = -1;
             while (choice != 0)
             {
                 Console.WriteLine();
-                Console.WriteLine("     МЕНЮ:   ");
+                Console.WriteLine(" МЕНЮ: ");
                 Console.WriteLine("1. Добавить товар");
                 Console.WriteLine("2. Удалить товар");
                 Console.WriteLine("3. Заказать поставку товара");
@@ -61,36 +45,250 @@ namespace ISIP424_Chirkina
                 Console.WriteLine("0. Выход");
                 Console.WriteLine();
                 Console.WriteLine("Выберете пункт: ");
-                choice = Convert.ToInt32(Console.ReadLine());
 
-                choice = Convert.ToInt32(Console.ReadLine());
+                // Проверка, что введено число 1
+                try
+                {
+                    choice = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Нужно ввести число!");
+                    choice = -1;
+                    continue;
+                }
 
                 // выбор
                 switch (choice)
                 {
                     case 1:
                         Console.WriteLine();
-                        Console.WriteLine("Введите товар который хотите добавить: ");
+                        Console.WriteLine("Добавление товара");
 
+                        Console.Write("Введите название товара: ");
+                        string newName = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(newName))
+                        {
+                            Console.WriteLine("Название не может быть пустым!");
+                            break;
+                        }
+
+                        int newCost;
+                        try
+                        {
+                            Console.Write("Введите цену: ");
+                            newCost = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Цена должна быть числом!");
+                            break;
+                        }
+                        if (newCost < 0)
+                        {
+                            Console.WriteLine("Цена не может быть отрицательной!");
+                            break;
+                        }
+
+                        int newKolvo;
+                        try
+                        {
+                            Console.Write("Введите количество: ");
+                            newKolvo = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Количество должно быть числом!");
+                            break;
+                        }
+                        if (newKolvo < 0)
+                        {
+                            Console.WriteLine("Количество не может быть отрицательным!");
+                            break;
+                        }
+
+                        Console.WriteLine("Выберите категорию:");
+                        Console.WriteLine("1. Продукты");
+                        Console.WriteLine("2. Одежда");
+                        Console.WriteLine("3. Электроника");
+                        Console.WriteLine("4. Бытовая техника");
+
+                        int katChoice;
+                        try
+                        {
+                            katChoice = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Нужно ввести число!");
+                            break;
+                        }
+                        if (katChoice < 1 || katChoice > 4)
+                        {
+                            Console.WriteLine("Такой категории нет!");
+                            break;
+                        }
+                        Kategoriya newKat = (Kategoriya)(katChoice - 1);
+
+                        tovary.Add(new Thing(ID++, newName, newCost, newKolvo, newKat));
+                        Console.WriteLine("Товар успешно добавлен! Код: " + (ID - 1));
                         break;
 
                     case 2:
                         Console.WriteLine();
-                        Console.WriteLine("Список товаров на данный момент: ");
-                        Console.WriteLine("Введите товер, который хотите удалить: ");
+                        Console.WriteLine("Удаление товара");
+                        Spisok();
 
+                        Console.Write("Введите код товара, который хотите удалить: ");
+                        int delID;
+                        try
+                        {
+                            delID = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Код должен быть числом!");
+                            break;
+                        }
+
+                        Thing delThing = null;
+                        foreach (Thing t in tovary)
+                        {
+                            if (t.ID == delID)
+                            {
+                                delThing = t;
+                            }
+                        }
+
+                        if (delThing == null)
+                        {
+                            Console.WriteLine("Товар с таким кодом не найден!");
+                        }
+                        else
+                        {
+                            tovary.Remove(delThing);
+                            Console.WriteLine("Товар \"" + delThing.name + "\" удалён!");
+                        }
                         break;
 
                     case 3:
                         Console.WriteLine();
-                        Console.WriteLine("Введите какой товар хотите заказать: ");
+                        Console.WriteLine("Поставка товара");
+                        Spisok();
 
+                        Console.Write("Введите код товара, который хотите заказать: ");
+                        int postID;
+                        try
+                        {
+                            postID = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Код должен быть числом!");
+                            break;
+                        }
+
+                        Thing postThing = null;
+                        foreach (Thing t in tovary)
+                        {
+                            if (t.ID == postID)
+                            {
+                                postThing = t;
+                            }
+                        }
+
+                        if (postThing == null)
+                        {
+                            Console.WriteLine("Товар не найден!");
+                            break;
+                        }
+
+                        int postKolvo;
+                        try
+                        {
+                            Console.Write("Сколько нужно товара: ");
+                            postKolvo = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Количество должно быть числом!");
+                            break;
+                        }
+                        if (postKolvo <= 0)
+                        {
+                            Console.WriteLine("Количество должно быть больше 0!");
+                            break;
+                        }
+
+                        postThing.kolvo = postThing.kolvo + postKolvo;
+                        postThing.ObnovitNalichie();
+                        Console.WriteLine("Поставка выполнена! Теперь на складе: " + postThing.kolvo);
                         break;
 
                     case 4:
                         Console.WriteLine();
-                        Console.WriteLine("Введите какой товар хотите продать: ");
+                        Console.WriteLine("Продажа товара");
+                        Spisok();
 
+                        Console.Write("Введите код товара, который хотите продать: ");
+                        int sellID;
+                        try
+                        {
+                            sellID = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Код должен быть числом!");
+                            break;
+                        }
+
+                        Thing sellThing = null;
+                        foreach (Thing t in tovary)
+                        {
+                            if (t.ID == sellID)
+                            {
+                                sellThing = t;
+                            }
+                        }
+
+                        if (sellThing == null)
+                        {
+                            Console.WriteLine("Товар не найден!");
+                            break;
+                        }
+
+                        // Проверка остатка на складе
+                        if (sellThing.kolvo == 0)
+                        {
+                            Console.WriteLine("Товара нет на складе!");
+                            break;
+                        }
+
+                        int sellKolvo;
+                        try
+                        {
+                            Console.Write("Сколько продать?: ");
+                            sellKolvo = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Количество должно быть числом!");
+                            break;
+                        }
+                        if (sellKolvo <= 0)
+                        {
+                            Console.WriteLine("Количество должно быть больше 0!");
+                            break;
+                        }
+                        if (sellKolvo > sellThing.kolvo)
+                        {
+                            Console.WriteLine("Недостаточно товара! На складе только: " + sellThing.kolvo);
+                            break;
+                        }
+
+                        sellThing.kolvo = sellThing.kolvo - sellKolvo;
+                        sellThing.ObnovitNalichie();
+                        Console.WriteLine("Продажа выполнена! Сумма покупки: " + (sellKolvo * sellThing.cost) + " руб.");
                         break;
 
                     case 5:
@@ -98,13 +296,38 @@ namespace ISIP424_Chirkina
                         Console.Write("Введите код, название или категорию: ");
                         string search = Console.ReadLine();
 
+                        if (string.IsNullOrWhiteSpace(search))
+                        {
+                            Console.WriteLine("Пустой запрос!");
+                            break;
+                        }
+
                         bool found = false;
 
-                        for (int i = 0; i < n; i++)
+                        foreach (Thing t in tovary)
                         {
-                            if (names[i] == search)
+                            bool sovpadenie = false;
+
+                            // ищем по коду
+                            if (t.ID.ToString() == search)
                             {
-                                Console.WriteLine(names[i] + " - " + prices[i] + " руб.");
+                                sovpadenie = true;
+                            }
+                            // ищем по названию
+                            if (t.name.ToLower() == search.ToLower())
+                            {
+                                sovpadenie = true;
+                            }
+                            // ищем по категории
+                            if (t.category.ToString().ToLower() == search.ToLower())
+                            {
+                                sovpadenie = true;
+                            }
+
+                            if (sovpadenie)
+                            {
+                                Console.WriteLine();
+                                t.ShowInfo();
                                 found = true;
                             }
                         }
@@ -114,14 +337,6 @@ namespace ISIP424_Chirkina
                             Console.WriteLine("Ничего не найдено.");
                         }
 
-                        break;
-
-                    case 6:
-                        //Вывод всех товаров
-                        foreach (Thing product in products)
-                        {
-                            Console.WriteLine(product.ID + product.name + product.cost);
-                        }
                         break;
 
                     case 0:
@@ -134,15 +349,62 @@ namespace ISIP424_Chirkina
                 }
             }
         }
+
+        // Метод для вывода всех товаров списком
+        static void Spisok()
+        {
+            if (tovary.Count == 0)
+            {
+                Console.WriteLine("Список товаров пуст.");
+                return;
+            }
+
+            Console.WriteLine("Список товаров:");
+            foreach (Thing t in tovary)
+            {
+                Console.WriteLine(t.ID + " " + t.name + " (" + t.category + ") - " +
+                t.cost + " руб, кол-во: " + t.kolvo);
+            }
+        }
     }
 
     class Thing
     {
+        // лист что можно сделать
         public int ID;
         public string name;
         public int cost;
         public int kolvo;
-        public int nalichie;
-        public string category;
+        public bool nalichie;
+        public Kategoriya category;
+
+        // присвоение
+        public Thing(int ID, string name, int cost, int kolvo, Kategoriya category)
+        {
+            this.ID = ID;
+            this.name = name;
+            this.cost = cost;
+            this.kolvo = kolvo;
+            this.category = category;
+            this.nalichie = kolvo > 0; // если больше 0 - значит есть на складе
+        }
+
+        // Обновить поле "в наличии" (вызываем после продажи/поставки)
+        public void ObnovitNalichie()
+        {
+            nalichie = kolvo > 0;
+        }
+
+        // Показать полную информацию о товаре
+        public void ShowInfo()
+        {
+            Console.WriteLine("Информация о товаре");
+            Console.WriteLine("Код: " + ID);
+            Console.WriteLine("Название: " + name);
+            Console.WriteLine("Цена: " + cost + " руб.");
+            Console.WriteLine("Количество: " + kolvo);
+            Console.WriteLine("В наличии: " + (nalichie ? "Да" : "Нет"));
+            Console.WriteLine("Категория: " + category);
+        }
     }
 }
