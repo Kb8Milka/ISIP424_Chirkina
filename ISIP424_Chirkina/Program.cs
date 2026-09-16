@@ -172,14 +172,14 @@ namespace ISIP424_Chirkina
 
                         Console.Write("Введите код товара, который хотите заказать: ");
                         int postID;
-                        try
-                        {
-                            postID = Convert.ToInt32(Console.ReadLine());
-                        }
-                        catch
+                        if (postID <= 0)
                         {
                             Console.WriteLine("Код должен быть числом!");
                             break;
+                        }
+                        else
+                        {
+                            postID = Convert.ToInt32(Console.ReadLine());
                         }
 
                         Thing postThing = null;
@@ -198,12 +198,12 @@ namespace ISIP424_Chirkina
                         }
 
                         int postKolvo;
-                        try
+                        if ()
                         {
                             Console.Write("Сколько нужно товара: ");
                             postKolvo = Convert.ToInt32(Console.ReadLine());
                         }
-                        catch
+                        else
                         {
                             Console.WriteLine("Количество должно быть числом!");
                             break;
@@ -226,11 +226,11 @@ namespace ISIP424_Chirkina
 
                         Console.Write("Введите код товара, который хотите продать: ");
                         int sellID;
-                        try
+                        if ( )
                         {
                             sellID = Convert.ToInt32(Console.ReadLine());
                         }
-                        catch
+                        else
                         {
                             Console.WriteLine("Код должен быть числом!");
                             break;
@@ -259,12 +259,12 @@ namespace ISIP424_Chirkina
                         }
 
                         int sellKolvo;
-                        try
+                        if ( )
                         {
                             Console.Write("Сколько продать?: ");
                             sellKolvo = Convert.ToInt32(Console.ReadLine());
                         }
-                        catch
+                        else
                         {
                             Console.WriteLine("Количество должно быть числом!");
                             break;
