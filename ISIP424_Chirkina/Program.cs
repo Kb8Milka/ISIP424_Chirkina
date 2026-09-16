@@ -229,7 +229,7 @@ namespace ISIP424_Chirkina
                         if ( )
                         {
                             sellID = Convert.ToInt32(Console.ReadLine());
-                        }
+                        } 
                         else
                         {
                             Console.WriteLine("Код должен быть числом!");
