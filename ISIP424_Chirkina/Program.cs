@@ -46,17 +46,9 @@ namespace ISIP424_Chirkina
                 Console.WriteLine();
                 Console.WriteLine("Выберете пункт: ");
 
-                // Проверка, что введено число 1
-                try
-                {
+                // Проверка, что введено числo
                     choice = Convert.ToInt32(Console.ReadLine());
-                }
-                catch
-                {
-                    Console.WriteLine("Нужно ввести число!");
                     choice = -1;
-                    continue;
-                }
 
                 // выбор
                 switch (choice)
