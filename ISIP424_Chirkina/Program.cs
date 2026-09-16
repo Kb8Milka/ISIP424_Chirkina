@@ -370,7 +370,7 @@ namespace ISIP424_Chirkina
 
     class Thing
     {
-        // лист что можно сделать
+        // лист что можно сделать 
         public int ID;
         public string name;
         public int cost;
