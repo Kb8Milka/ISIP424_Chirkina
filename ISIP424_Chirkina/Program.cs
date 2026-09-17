@@ -122,22 +122,22 @@ namespace ISIP424_Chirkina
 
                         Kategoriya newKat;
 
-if (katChoice == 1)
-{
-    newKat = Kategoriya.Продукты;
-}
-else if (katChoice == 2)
-{
-    newKat = Kategoriya.Одежда;
-}
-else if (katChoice == 3)
-{
-    newKat = Kategoriya.Электроника;
-}
-else
-{
-    newKat = Kategoriya.БытоваяТехника;
-}
+                        if (katChoice == 1)
+                        {
+                            newKat = Kategoriya.Продукты;
+                        }
+                        else if (katChoice == 2)
+                        {
+                            newKat = Kategoriya.Одежда;
+                        }
+                        else if (katChoice == 3)
+                        {
+                            newKat = Kategoriya.Электроника;
+                        }
+                        else
+                        {
+                            newKat = Kategoriya.БытоваяТехника;
+                        }
 
                         tovary.Add(new Thing(ID++, newName, newCost, newKolvo, newKat));
                         Console.WriteLine("Товар успешно добавлен! Код: " + (ID - 1));
