@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISIP424_Chirkina
 {
-    // Перечисление категорий (минимум 3, я сделал 4)
+    // Перечесление
     enum Kategoriya
     {
         Продукты,
@@ -20,7 +20,7 @@ namespace ISIP424_Chirkina
         // Список всех товаров магазина
         static List<Thing> tovary = new List<Thing>();
 
-        // Счётчик для уникального кода. Начинается с 1.
+        // Счётчик для уникального кода..
         static int ID = 1;
 
         static void Main(string[] args)
@@ -120,7 +120,24 @@ namespace ISIP424_Chirkina
                             break;
                         }
 
-                        Kategoriya newKat = (Kategoriya)(katChoice - 1);
+                        Kategoriya newKat;
+
+if (katChoice == 1)
+{
+    newKat = Kategoriya.Продукты;
+}
+else if (katChoice == 2)
+{
+    newKat = Kategoriya.Одежда;
+}
+else if (katChoice == 3)
+{
+    newKat = Kategoriya.Электроника;
+}
+else
+{
+    newKat = Kategoriya.БытоваяТехника;
+}
 
                         tovary.Add(new Thing(ID++, newName, newCost, newKolvo, newKat));
                         Console.WriteLine("Товар успешно добавлен! Код: " + (ID - 1));
