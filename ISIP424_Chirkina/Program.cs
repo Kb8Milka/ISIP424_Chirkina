@@ -218,7 +218,6 @@ for (int i = 0; i < text.Length; i++)
                     case 0:
                         Console.WriteLine("Программа завершена, Босс");
                         break;
-
                     default:
                         Console.WriteLine("Такого выбора нет :( ");
                         break;
