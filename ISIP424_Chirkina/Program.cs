@@ -34,6 +34,7 @@ namespace ISIP424_Chirkina
                         Console.WriteLine("Самое длинное слово: ");
                         Console.WriteLine("Статистика по частоте встречаемости каждой буквы: ");
                         Console.WriteLine("Количество гласных и согласных: ");
+                        // обязательно сохранение всей статистики
                         break;
                     case 2:
                         Console.WriteLine("Статистика по прошлым текстам: ");
@@ -47,5 +48,9 @@ namespace ISIP424_Chirkina
                         Console.WriteLine("Такого выбора нет :( ");
                         break;
                 }
+            }
+        }
+
+
     }
 }
