@@ -15,11 +15,8 @@ namespace ISIP424_Chirkina
             {
                 Console.WriteLine();
                 Console.WriteLine("     МЕНЮ:   ");
-                Console.WriteLine("1. Вывод данных");
-                Console.WriteLine("2. Статистика");
-                Console.WriteLine("3. Сортировка по цене");
-                Console.WriteLine("4. Конвертация валюты ");
-                Console.WriteLine("5. Поиск по названию ");
+                Console.WriteLine("1. Новое предложение и его статистика");
+                Console.WriteLine("2. Статистика по прошлым текстам");
                 Console.WriteLine("0. Выход");
                 Console.WriteLine();
                 Console.WriteLine("Выберете пункт: ");
@@ -29,6 +26,7 @@ namespace ISIP424_Chirkina
                 switch (choice)
                 {
                     case 1:
+                        Console.WriteLine("Введите новое предложение(минимум 100 символов): ");
                         Console.WriteLine("Количество слов в тексте: ");
                         Console.WriteLine("Самое короткое слово: ");
                         Console.WriteLine("Количество предложений: ");
@@ -36,7 +34,10 @@ namespace ISIP424_Chirkina
                         Console.WriteLine("Самое длинное слово: ");
                         Console.WriteLine("Статистика по частоте встречаемости каждой буквы: ");
                         Console.WriteLine("Количество гласных и согласных: ");
-
-        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Статистика по прошлым текстам: ");
+                        break;
+                }
     }
 }
