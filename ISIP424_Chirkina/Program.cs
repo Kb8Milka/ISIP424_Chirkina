@@ -10,7 +10,15 @@ namespace ISIP424_Chirkina
     {
         static void Main(string[] args)
         {
-          
+
+            Console.WriteLine("Количество слов в тексте: ");
+            Console.WriteLine("Самое короткое слово: ");
+            Console.WriteLine("Количество предложений: ");
+            Console.WriteLine("Количество гласных и согласных: ");
+            Console.WriteLine("Самое длинное слово: ");
+            Console.WriteLine("Статистика по частоте встречаемости каждой буквы: ");
+            Console.WriteLine("Количество гласных и согласных: ");
+
         }
     }
 }
