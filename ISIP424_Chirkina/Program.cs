@@ -38,6 +38,8 @@ namespace ISIP424_Chirkina
                     case 2:
                         Console.WriteLine("Статистика по прошлым текстам: ");
                         break;
+                    default:
+
                 }
     }
 }
