@@ -229,5 +229,3 @@ namespace ISIP424_Chirkina
 }
 
 
-    }
-}
