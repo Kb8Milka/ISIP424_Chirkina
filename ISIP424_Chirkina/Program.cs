@@ -25,7 +25,7 @@ namespace ISIP424_Chirkina
         static void Main(string[] args)
         {
             // Пять тестовых товаров
-            // ID, название книги, цена, год, автор, Genre category
+            // ID, название книги, цена, год, автор, жанр
             tovary.Add(new Thing(ID++, "Гарри Поттер и филосовский камень", 340, 2009, "Джоан Роулинг", Genre.Фантастика));
             tovary.Add(new Thing(ID++, "Гарри Поттер и тайная комната", 500, 1998, "Джоан Роулинг", Genre.Фантастика));
             tovary.Add(new Thing(ID++, "Десять негритят", 250, 2014, "Агата Кристи", Genre.Детектив));
@@ -60,7 +60,7 @@ namespace ISIP424_Chirkina
                 switch (choice)
                 {
                     case 1:
-                        // добавление товара
+                        // добавление товара +
                         Console.WriteLine();
                         Console.WriteLine("Добавление книги");
 
@@ -150,7 +150,7 @@ namespace ISIP424_Chirkina
                         break;
 
                     case 2:
-                        // удаление по индификатору
+                        // удаление по индификатору + 
                         Console.WriteLine();
                         Console.WriteLine("Удаление товара");
                         Spisok();
@@ -195,6 +195,10 @@ namespace ISIP424_Chirkina
                     case 3:
                         // Отсортировать по названию или году
                         Console.WriteLine();
+                        Console.WriteLine("Выберите по чему вы хотите отсортировать: ");
+                        Console.WriteLine("1. По названию");
+                        Console.WriteLine("2. По году");
+
 
                         break;
 
@@ -205,7 +209,7 @@ namespace ISIP424_Chirkina
                         break;
 
                     case 5:
-                        // Поиск книги (по коду, названию и жанру)
+                        // Поиск книги (по коду, названию и жанру) +
                         Console.WriteLine();
                         Console.Write("Введите код, название или категорию: ");
 
