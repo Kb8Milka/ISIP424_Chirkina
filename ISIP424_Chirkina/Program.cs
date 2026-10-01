@@ -199,7 +199,29 @@ namespace ISIP424_Chirkina
                         Console.WriteLine("1. По названию");
                         Console.WriteLine("2. По году");
 
+                        int Chose;
 
+                        if (!int.TryParse(Console.ReadLine(), out Chose))
+                        {
+                            Console.WriteLine("Нужно ввести число!");
+                            break;
+                        }
+                        else if (Chose < 1 || Chose > 2)
+                        {
+                            Console.WriteLine("Такого варианта нет!");
+                            break;
+                        }
+
+                        int Sort;
+
+                        if (Chose == 1)
+                        {
+                            ;
+                        }
+                        else
+                        {
+                            newKat = Genre.Фантастика;
+                        }
                         break;
 
                     case 4:
