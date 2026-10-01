@@ -6,31 +6,30 @@ using System.Threading.Tasks;
 
 namespace ISIP424_Chirkina
 {
-    // Перечесление
-    enum Kategoriya
+    // Перечесление жанров
+    enum Genre
     {
-        Продукты,
-        Одежда,
-        Электроника,
-        БытоваяТехника
+        Психолгия,
+        Детектив,
+        Фантастика
     }
 
     internal class Program
     {
-        // Список всех товаров магазина
+        // Список всех книг
         static List<Thing> tovary = new List<Thing>();
 
-        // Счётчик для уникального кода..
+        // Счётчик индификатора
         static int ID = 1;
 
         static void Main(string[] args)
         {
             // Пять тестовых товаров
-            tovary.Add(new Thing(ID++, "Хлеб", 50, 10, Kategoriya.Продукты));
-            tovary.Add(new Thing(ID++, "Молоко", 80, 5, Kategoriya.Продукты));
-            tovary.Add(new Thing(ID++, "Футболка", 1200, 3, Kategoriya.Одежда));
-            tovary.Add(new Thing(ID++, "Наушники", 2500, 0, Kategoriya.Электроника));
-            tovary.Add(new Thing(ID++, "Микроволновка", 7000, 2, Kategoriya.БытоваяТехника));
+            tovary.Add(new Thing(ID++, "Хлеб", 50, 10, Genre.Фантастика));
+            tovary.Add(new Thing(ID++, "Молоко", 80, 5, Genre.Фантастика));
+            tovary.Add(new Thing(ID++, "Футболка", 1200, 3, Genre.Детектив));
+            tovary.Add(new Thing(ID++, "Наушники", 2500, 0, Genre.Детектив));
+            tovary.Add(new Thing(ID++, "Микроволновка", 7000, 2, Genre.Психолгия));
 
             // меню
             int choice = -1;
@@ -38,11 +37,12 @@ namespace ISIP424_Chirkina
             {
                 Console.WriteLine();
                 Console.WriteLine(" МЕНЮ: ");
-                Console.WriteLine("1. Добавить товар");
-                Console.WriteLine("2. Удалить товар");
-                Console.WriteLine("3. Заказать поставку товара");
-                Console.WriteLine("4. Продать товар");
-                Console.WriteLine("5. Поиск товаров (по коду, названию и категории)");
+                Console.WriteLine("1. Добавить книгу");
+                Console.WriteLine("2. Удалить книгу по индификатору");
+                Console.WriteLine("3. Отсортировать по названию или году");
+                Console.WriteLine("4. Вывод самой дорогой и дешевой");
+                Console.WriteLine("5. Поиск книги (по коду, названию и категории)");
+                Console.WriteLine("6. Сгруппировать книги по авторам и вывести количество книг каждого автора");
                 Console.WriteLine("0. Выход");
                 Console.WriteLine();
                 Console.WriteLine("Выберете пункт: ");
@@ -120,25 +120,21 @@ namespace ISIP424_Chirkina
                             break;
                         }
 
-                        Kategoriya newKat;
+                        Genre newKat;
 
                         if (katChoice == 1)
                         {
-                            newKat = Kategoriya.Продукты;
+                            newKat = Genre.Психолгия;
                         }
                         else if (katChoice == 2)
                         {
-                            newKat = Kategoriya.Одежда;
-                        }
-                        else if (katChoice == 3)
-                        {
-                            newKat = Kategoriya.Электроника;
+                            newKat = Genre.Детектив;
                         }
                         else
                         {
-                            newKat = Kategoriya.БытоваяТехника;
+                            newKat = Genre.Фантастика;
                         }
-
+                        
                         tovary.Add(new Thing(ID++, newName, newCost, newKolvo, newKat));
                         Console.WriteLine("Товар успешно добавлен! Код: " + (ID - 1));
                         break;
@@ -404,10 +400,10 @@ namespace ISIP424_Chirkina
         public int cost;
         public int kolvo;
         public bool nalichie;
-        public Kategoriya category;
+        public Genre category;
 
         // присвоение
-        public Thing(int ID, string name, int cost, int kolvo, Kategoriya category)
+        public Thing(int ID, string name, int cost, int kolvo, Genre category)
         {
             this.ID = ID;
             this.name = name;
