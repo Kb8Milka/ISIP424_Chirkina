@@ -394,7 +394,7 @@ namespace ISIP424_Chirkina
 
     class Thing
     {
-        // Что должно храниться:
+        // Что должно храниться: Уникальный идентификатор, Название, автор, Жанр, год издания, цена
         public int ID;
         public string name;
         public int cost;
