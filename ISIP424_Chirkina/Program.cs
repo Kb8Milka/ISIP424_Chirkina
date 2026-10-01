@@ -41,7 +41,7 @@ namespace ISIP424_Chirkina
                 Console.WriteLine("2. Удалить книгу по индификатору");
                 Console.WriteLine("3. Отсортировать по названию или году");
                 Console.WriteLine("4. Вывод самой дорогой и дешевой");
-                Console.WriteLine("5. Поиск книги (по коду, названию и категории)");
+                Console.WriteLine("5. Поиск книги (по коду, названию и жанру)");
                 Console.WriteLine("6. Сгруппировать книги по авторам и вывести количество книг каждого автора");
                 Console.WriteLine("0. Выход");
                 Console.WriteLine();
@@ -59,6 +59,7 @@ namespace ISIP424_Chirkina
                 switch (choice)
                 {
                     case 1:
+                        // добавление товара
                         Console.WriteLine();
                         Console.WriteLine("Добавление товара");
 
@@ -140,6 +141,7 @@ namespace ISIP424_Chirkina
                         break;
 
                     case 2:
+                        // удаление по индификатору
                         Console.WriteLine();
                         Console.WriteLine("Удаление товара");
                         Spisok();
@@ -182,136 +184,19 @@ namespace ISIP424_Chirkina
                         break;
 
                     case 3:
+                        // Отсортировать по названию или году
                         Console.WriteLine();
-                        Console.WriteLine("Поставка товара");
-                        Spisok();
 
-                        Console.Write("Введите код товара, который хотите заказать: ");
-
-                        int postID;
-
-                        if (!int.TryParse(Console.ReadLine(), out postID))
-                        {
-                            Console.WriteLine("Код должен быть числом!");
-                            break;
-                        }
-                        else if (postID <= 0)
-                        {
-                            Console.WriteLine("Код должен быть положительным!");
-                            break;
-                        }
-
-                        Thing postThing = null;
-
-                        foreach (Thing t in tovary)
-                        {
-                            if (t.ID == postID)
-                            {
-                                postThing = t;
-                            }
-                        }
-
-                        if (postThing == null)
-                        {
-                            Console.WriteLine("Товар не найден!");
-                            break;
-                        }
-
-                        int postKolvo;
-
-                        Console.Write("Сколько нужно товара: ");
-
-                        if (!int.TryParse(Console.ReadLine(), out postKolvo))
-                        {
-                            Console.WriteLine("Количество должно быть числом!");
-                            break;
-                        }
-
-                        if (postKolvo <= 0)
-                        {
-                            Console.WriteLine("Количество должно быть больше 0!");
-                            break;
-                        }
-
-                        postThing.kolvo = postThing.kolvo + postKolvo;
-                        postThing.ObnovitNalichie();
-
-                        Console.WriteLine("Поставка выполнена! Теперь на складе: " + postThing.kolvo);
                         break;
 
                     case 4:
+                        // Вывод самой дорогой и дешевой
                         Console.WriteLine();
-                        Console.WriteLine("Продажа товара");
-                        Spisok();
-
-                        Console.Write("Введите код товара, который хотите продать: ");
-
-                        int sellID;
-
-                        if (!int.TryParse(Console.ReadLine(), out sellID))
-                        {
-                            Console.WriteLine("Код должен быть числом!");
-                            break;
-                        }
-                        else if (sellID <= 0)
-                        {
-                            Console.WriteLine("Код должен быть положительным!");
-                            break;
-                        }
-
-                        Thing sellThing = null;
-
-                        foreach (Thing t in tovary)
-                        {
-                            if (t.ID == sellID)
-                            {
-                                sellThing = t;
-                            }
-                        }
-
-                        if (sellThing == null)
-                        {
-                            Console.WriteLine("Товар не найден!");
-                            break;
-                        }
-
-                        // Проверка остатка на складе
-                        if (sellThing.kolvo == 0)
-                        {
-                            Console.WriteLine("Товара нет на складе!");
-                            break;
-                        }
-
-                        int sellKolvo;
-
-                        Console.Write("Сколько продать?: ");
-
-                        if (!int.TryParse(Console.ReadLine(), out sellKolvo))
-                        {
-                            Console.WriteLine("Количество должно быть числом!");
-                            break;
-                        }
-
-                        if (sellKolvo <= 0)
-                        {
-                            Console.WriteLine("Количество должно быть больше 0!");
-                            break;
-                        }
-
-                        if (sellKolvo > sellThing.kolvo)
-                        {
-                            Console.WriteLine("Недостаточно товара! На складе только: " + sellThing.kolvo);
-                            break;
-                        }
-
-                        sellThing.kolvo = sellThing.kolvo - sellKolvo;
-                        sellThing.ObnovitNalichie();
-
-                        Console.WriteLine("Продажа выполнена! Сумма покупки: " +
-                            (sellKolvo * sellThing.cost) + " руб.");
+                        
                         break;
 
                     case 5:
+                        // Поиск книги (по коду, названию и жанру)
                         Console.WriteLine();
                         Console.Write("Введите код, название или категорию: ");
 
@@ -363,6 +248,7 @@ namespace ISIP424_Chirkina
                         break;
 
                     case 6:
+                        // Сгруппировать книги по авторам и вывести количество книг каждого автора
                         Console.WriteLine();
                         break;
 
