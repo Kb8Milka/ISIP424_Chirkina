@@ -62,9 +62,9 @@ namespace ISIP424_Chirkina
                     case 1:
                         // добавление товара
                         Console.WriteLine();
-                        Console.WriteLine("Добавление товара");
+                        Console.WriteLine("Добавление книги");
 
-                        Console.Write("Введите название товара: ");
+                        Console.Write("Введите название книги: ");
                         string newName = Console.ReadLine();
 
                         if (string.IsNullOrWhiteSpace(newName))
@@ -103,11 +103,10 @@ namespace ISIP424_Chirkina
                             break;
                         }
 
-                        Console.WriteLine("Выберите категорию:");
-                        Console.WriteLine("1. Продукты");
-                        Console.WriteLine("2. Одежда");
-                        Console.WriteLine("3. Электроника");
-                        Console.WriteLine("4. Бытовая техника");
+                        Console.WriteLine("Выберите жанр:");
+                        Console.WriteLine("1. Психология");
+                        Console.WriteLine("2. Детектив");
+                        Console.WriteLine("3. Фантастика");
 
                         int katChoice;
 
