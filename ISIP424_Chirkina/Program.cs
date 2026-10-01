@@ -55,31 +55,31 @@ namespace ISIP424_Chirkina
                         st.Text = text;
 
                         // заменяем знаки препинания на пробелы
-                        // массив символов, в котором лежат все знаки препинания, которые надо убрать
-                        char[] znaki = { '.', ',', '!', '?', ';', ':', '-', '"', '\'', '(', ')' };
-                        string cleanText = "";
-                        // заменяем в тексте все знаки препинания на пробелы
-                        for (int i = 0; i < text.Length; i++)
-                        {
-                            char c = text[i];
-                            bool etoZnak = false;
-                            for (int j = 0; j < znaki.Length; j++)
-                            {
-                                if (c == znaki[j])
-                                {
-                                    // помечаем: да, это знак препинания
-                                    etoZnak = true;
-                                }
-                            }
-                            if (etoZnak)
-                            {
-                                cleanText = cleanText + " ";
-                            }
-                            else
-                            {
-                                cleanText = cleanText + c;
-                            }
-                        }
+
+string cleanText = "";
+// сюда будем собирать текст без знаков препинания; пока пусто
+
+for (int i = 0; i < text.Length; i++)
+// идём по каждому символу исходного текста
+{
+    char c = text[i];
+    // берём i-й символ текста
+
+    if (c == '.' || c == ',' || c == '!' || c == '?' ||
+        c == ';' || c == ':' || c == '-' ||
+        c == '(' || c == ')')
+    // если символ — один из знаков препинания
+    {
+        cleanText = cleanText + " ";
+        // вместо знака добавляем пробел
+    }
+    else
+    // иначе — символ обычный
+    {
+        cleanText = cleanText + c;
+        // добавляем сам символ как есть
+    }
+}
 
                         // режем получившийся текст на слова по пробелам
                         List<string> words = new List<string>();
