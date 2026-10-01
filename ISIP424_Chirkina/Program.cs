@@ -394,7 +394,7 @@ namespace ISIP424_Chirkina
 
     class Thing
     {
-        // лист что можно сделать
+        // Что должно храниться:
         public int ID;
         public string name;
         public int cost;
