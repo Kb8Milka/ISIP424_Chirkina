@@ -25,11 +25,12 @@ namespace ISIP424_Chirkina
         static void Main(string[] args)
         {
             // Пять тестовых товаров
-            tovary.Add(new Thing(ID++, "Хлеб", 50, 10, Genre.Фантастика));
-            tovary.Add(new Thing(ID++, "Молоко", 80, 5, Genre.Фантастика));
-            tovary.Add(new Thing(ID++, "Футболка", 1200, 3, Genre.Детектив));
-            tovary.Add(new Thing(ID++, "Наушники", 2500, 0, Genre.Детектив));
-            tovary.Add(new Thing(ID++, "Микроволновка", 7000, 2, Genre.Психолгия));
+            // ID, название книги, цена, год, автор, Genre category
+            tovary.Add(new Thing(ID++, "Гарри Поттер и филосовский камень", 340, 2009, "Джоан Роулинг", Genre.Фантастика));
+            tovary.Add(new Thing(ID++, "Гарри Поттер и тайная комната", 500, 1998, "Джоан Роулинг", Genre.Фантастика));
+            tovary.Add(new Thing(ID++, "Десять негритят", 250, 2014, "Агата Кристи", Genre.Детектив));
+            tovary.Add(new Thing(ID++, "Падение дома Ашеров", 304, 2026, "Эдгар Аллан По", Genre.Детектив));
+            tovary.Add(new Thing(ID++, "Мудрость психопатов", 999, 2024, "Кевин Даттон", Genre.Психолгия));
 
             // меню
             int choice = -1;
