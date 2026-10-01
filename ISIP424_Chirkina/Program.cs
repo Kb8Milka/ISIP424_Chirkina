@@ -392,43 +392,38 @@ namespace ISIP424_Chirkina
         }
     }
 
+    // не трогать
     class Thing
     {
         // Что должно храниться: Уникальный идентификатор, Название, автор, Жанр, год издания, цена
-        public int ID;
+        public int ID; 
         public string name;
+        public string avtorname;
         public int cost;
-        public int kolvo;
-        public bool nalichie;
+        public int year;
         public Genre category;
 
         // присвоение
-        public Thing(int ID, string name, int cost, int kolvo, Genre category)
+        public Thing(int ID, string name, int cost, int year, string avtorname, Genre category)
         {
             this.ID = ID;
             this.name = name;
+            this.avtorname = avtorname;
             this.cost = cost;
-            this.kolvo = kolvo;
+            this.year = year;
             this.category = category;
-            this.nalichie = kolvo > 0; // если больше 0 - значит есть на складе
-        }
-
-        // Обновить поле "в наличии" (вызываем после продажи/поставки)
-        public void ObnovitNalichie()
-        {
-            nalichie = kolvo > 0;
         }
 
         // Показать полную информацию о товаре
         public void ShowInfo()
         {
             Console.WriteLine("Информация о товаре");
-            Console.WriteLine("Код: " + ID);
-            Console.WriteLine("Название: " + name);
+            Console.WriteLine("Индификатор: " + ID);
+            Console.WriteLine("Название книги: " + name);
+            Console.WriteLine("Автор: " + avtorname);
+            Console.WriteLine("Год: " + year);
             Console.WriteLine("Цена: " + cost + " руб.");
-            Console.WriteLine("Количество: " + kolvo);
-            Console.WriteLine("В наличии: " + (nalichie ? "Да" : "Нет"));
-            Console.WriteLine("Категория: " + category);
+            Console.WriteLine("Жанр: " + category);
         }
     }
 }
