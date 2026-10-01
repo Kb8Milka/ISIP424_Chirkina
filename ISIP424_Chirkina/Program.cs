@@ -88,18 +88,27 @@ namespace ISIP424_Chirkina
                             break;
                         }
 
-                        int newKolvo;
+                        int newYear;
 
-                        Console.Write("Введите количество: ");
+                        Console.Write("Введите год: ");
 
-                        if (!int.TryParse(Console.ReadLine(), out newKolvo))
+                        if (!int.TryParse(Console.ReadLine(), out newYear))
                         {
-                            Console.WriteLine("Количество должно быть числом!");
+                            Console.WriteLine("Год должен быть числом!");
                             break;
                         }
-                        else if (newKolvo < 0)
+                        else if (newYear < 0)
                         {
-                            Console.WriteLine("Количество не может быть отрицательным!");
+                            Console.WriteLine("Год не может быть отрицательным!");
+                            break;
+                        }
+
+                        Console.Write("Введите автора: ");
+                        string newAvtor = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(newAvtor))
+                        {
+                            Console.WriteLine("Название не может быть пустым!");
                             break;
                         }
 
@@ -115,7 +124,7 @@ namespace ISIP424_Chirkina
                             Console.WriteLine("Нужно ввести число!");
                             break;
                         }
-                        else if (katChoice < 1 || katChoice > 4)
+                        else if (katChoice < 1 || katChoice > 3)
                         {
                             Console.WriteLine("Такой категории нет!");
                             break;
@@ -136,7 +145,7 @@ namespace ISIP424_Chirkina
                             newKat = Genre.Фантастика;
                         }
                         
-                        tovary.Add(new Thing(ID++, newName, newCost, newKolvo, newKat));
+                        tovary.Add(new Thing(ID++, newName, newCost, newYear, newAvtor, newKat));
                         Console.WriteLine("Товар успешно добавлен! Код: " + (ID - 1));
                         break;
 
