@@ -362,6 +362,10 @@ namespace ISIP424_Chirkina
 
                         break;
 
+                    case 6:
+                        Console.WriteLine();
+                        break;
+
                     case 0:
                         Console.WriteLine("Программа завершена, Босс");
                         break;
@@ -373,6 +377,7 @@ namespace ISIP424_Chirkina
             }
         }
 
+//Не трогать
         // Метод для вывода всех товаров списком
         static void Spisok()
         {
@@ -386,13 +391,12 @@ namespace ISIP424_Chirkina
 
             foreach (Thing t in tovary)
             {
-                Console.WriteLine(t.ID + " " + t.name + " (" + t.category + ") - " +
-                    t.cost + " руб, кол-во: " + t.kolvo);
+                Console.WriteLine(t.ID + " " + t.name + t.avtorname + t.year + " (" + t.category + ") - " +
+                    t.cost + " руб ");
             }
         }
     }
 
-    //Не трогать
     class Thing
     {
         // Что должно храниться: Уникальный идентификатор, Название, автор, Жанр, год издания, цена
