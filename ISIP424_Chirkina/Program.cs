@@ -212,22 +212,55 @@ namespace ISIP424_Chirkina
                             break;
                         }
 
-                        int Sort;
-
                         if (Chose == 1)
                         {
-                            ;
+                            // сортируем копию списка по названию от А до Я
+                            List<Thing> sortirovka = tovary.OrderBy(t => t.name).ToList();
+
+                            Console.WriteLine();
+                            Console.WriteLine("Книги по алфавиту:");
+                            foreach (Thing t in sortirovka)
+                            {
+                                Console.WriteLine(t.ID + " " + t.name + " " + t.avtorname + " " + t.year + " (" + t.category + ") - " +
+                                    t.cost + " руб ");
+                            }
                         }
                         else
                         {
-                            newKat = Genre.Фантастика;
+                            // сортируем копию списка по году от старых к новым
+                            List<Thing> sortirovka = tovary.OrderBy(t => t.year).ToList();
+
+                            Console.WriteLine();
+                            Console.WriteLine("Книги по году издания:");
+                            foreach (Thing t in sortirovka)
+                            {
+                                Console.WriteLine(t.ID + " " + t.name + " " + t.avtorname + " " + t.year + " (" + t.category + ") - " +
+                                    t.cost + " руб ");
+                            }
                         }
+
                         break;
 
                     case 4:
                         // Вывод самой дорогой и дешевой
                         Console.WriteLine();
-                        
+
+                        if (tovary.Count == 0)
+                        {
+                            Console.WriteLine("Список книг пуст!");
+                            break;
+                        }
+
+                        // сортируем по цене и берём первую книгу
+                        Thing dorogaya = tovary.OrderByDescending(t => t.cost).First();
+                        Thing deshevaya = tovary.OrderBy(t => t.cost).First();
+
+                        Console.WriteLine("Самая дорогая книга:");
+                        dorogaya.ShowInfo();
+                        Console.WriteLine();
+                        Console.WriteLine("Самая дешёвая книга:");
+                        deshevaya.ShowInfo();
+
                         break;
 
                     case 5:
@@ -285,6 +318,24 @@ namespace ISIP424_Chirkina
                     case 6:
                         // Сгруппировать книги по авторам и вывести количество книг каждого автора
                         Console.WriteLine();
+
+                        if (tovary.Count == 0)
+                        {
+                            Console.WriteLine("Список книг пуст!");
+                            break;
+                        }
+
+                        // раскладываем книги по авторам
+                        var gruppy = tovary.GroupBy(t => t.avtorname);
+
+                        Console.WriteLine("Сколько книг у каждого автора:");
+                        foreach (var gruppa in gruppy)
+                        {
+                            // gruppa.Key - это имя автора
+                            // gruppa.Count() - сколько книг в этой группе
+                            Console.WriteLine(gruppa.Key + " " + gruppa.Count() + " книг");
+                        }
+
                         break;
 
                     case 0:
