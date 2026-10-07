@@ -349,7 +349,6 @@ namespace ISIP424_Chirkina
             }
         }
 
-//Не трогать
         // Метод для вывода всех товаров списком
         static void Spisok()
         {
