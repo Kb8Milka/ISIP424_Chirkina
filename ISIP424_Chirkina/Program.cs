@@ -193,7 +193,7 @@ namespace ISIP424_Chirkina
                         break;
 
                     case 3:
-                        // Отсортировать по названию или году
+                        // Отсортировать по названию или году +
                         Console.WriteLine();
                         Console.WriteLine("Выберите по чему вы хотите отсортировать: ");
                         Console.WriteLine("1. По названию");
@@ -242,7 +242,7 @@ namespace ISIP424_Chirkina
                         break;
 
                     case 4:
-                        // Вывод самой дорогой и дешевой
+                        // Вывод самой дорогой и дешевой +
                         Console.WriteLine();
 
                         if (tovary.Count == 0)
@@ -316,7 +316,7 @@ namespace ISIP424_Chirkina
                         break;
 
                     case 6:
-                        // Сгруппировать книги по авторам и вывести количество книг каждого автора
+                        // Сгруппировать книги по авторам и вывести количество книг каждого автора +
                         Console.WriteLine();
 
                         if (tovary.Count == 0)
