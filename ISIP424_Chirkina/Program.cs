@@ -252,8 +252,8 @@ namespace ISIP424_Chirkina
                         }
 
                         // сортируем по цене и берём первую книгу
-                        Thing dorogaya = tovary.OrderByDescending(t => t.cost).First();
-                        Thing deshevaya = tovary.OrderBy(t => t.cost).First();
+                        Thing dorogaya = tovary.OrderByDescending(t => t.cost).FirstOrDefault();
+                        Thing deshevaya = tovary.OrderBy(t => t.cost).FirstOrDefault();
 
                         Console.WriteLine("Самая дорогая книга:");
                         dorogaya.ShowInfo();
