@@ -42,7 +42,7 @@ namespace ISIP424_Chirkina
                 Console.WriteLine("2. Удалить книгу по индификатору");
                 Console.WriteLine("3. Отсортировать по названию или году");
                 Console.WriteLine("4. Вывод самой дорогой и дешевой");
-                Console.WriteLine("5. Поиск книги по коду");
+                Console.WriteLine("5. Поиск книги по автору");
                 Console.WriteLine("6. Поиск книги по названию");
                 Console.WriteLine("7. Поиск книги по жанру");
                 Console.WriteLine("8. Сгруппировать книги по авторам и вывести количество книг каждого автора");
@@ -268,33 +268,28 @@ namespace ISIP424_Chirkina
                     case 5:
                         // Поиск книги
                         Console.WriteLine();
-                        Console.Write("Введите код: ");
-                        string search = Console.ReadLine();
-
-                        // поиск по коду
-                        List<Thing> tovary = tovary.OrderBy(t => t.ID).ToList();
+                        Console.Write("Введите автора: ");
+                        List<Thing> 
+                        List<Thing> tovary = tovary.Where(k => k.avtorname.ToLower().Contains(avtorname.ToLower())).ToList();
 
                         break;
 
                     case 6:
                         // Поиск книги
                         Console.WriteLine();
-                        Console.Write("Введите код: ");
-                        string search = Console.ReadLine();
-
+                        Console.Write("Введите название: ");
                         // поиск по названию
-                        List<Thing> tovary = tovary.OrderBy(t => t.ID).ToList();
+                       
 
                         break;
 
                     case 7:
                         // Поиск книги
                         Console.WriteLine();
-                        Console.Write("Введите код: ");
-                        string search = Console.ReadLine();
+                        Console.Write("Введите жанр: ");
 
                         // поиск по жанру
-                        List<Thing> tovary = tovary.OrderBy(t => t.ID).ToList();
+                        
 
                         break;
 
