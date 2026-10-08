@@ -266,30 +266,89 @@ namespace ISIP424_Chirkina
                         break;
 
                     case 5:
-                        // Поиск книги
+                        // Поиск книги по автору
                         Console.WriteLine();
                         Console.Write("Введите автора: ");
-                        List<Thing> 
-                        List<Thing> tovary = tovary.Where(k => k.avtorname.ToLower().Contains(avtorname.ToLower())).ToList();
+                        string avtorname = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(avtorname))
+                        {
+                            Console.WriteLine("Пустой запрос!");
+                            break;
+                        }
+
+                        List<Thing> result1 = tovary.Where(k => k.avtorname.ToLower().Contains(avtorname.ToLower())).ToList();
+
+                        if (result1.Count == 0)
+                        {
+                            Console.WriteLine("Ничего не найдено.");
+                        }
+                        else
+                        {
+                            foreach (Thing t in result1)
+                            {
+                                t.ShowInfo();
+                                Console.WriteLine();
+                            }
+                        }
 
                         break;
 
                     case 6:
-                        // Поиск книги
+                        // Поиск книги по названию
                         Console.WriteLine();
                         Console.Write("Введите название: ");
-                        // поиск по названию
-                       
+                        string nazvanie = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(nazvanie))
+                        {
+                            Console.WriteLine("Пустой запрос!");
+                            break;
+                        }
+
+                        List<Thing> result2 = tovary.Where(k => k.name.ToLower().Contains(nazvanie.ToLower())).ToList();
+
+                        if (result2.Count == 0)
+                        {
+                            Console.WriteLine("Ничего не найдено.");
+                        }
+                        else
+                        {
+                            foreach (Thing t in result2)
+                            {
+                                t.ShowInfo();
+                                Console.WriteLine();
+                            }
+                        }
 
                         break;
 
                     case 7:
-                        // Поиск книги
+                        // Поиск книги по жанру
                         Console.WriteLine();
                         Console.Write("Введите жанр: ");
+                        string zhanr = Console.ReadLine();
 
-                        // поиск по жанру
-                        
+                        if (string.IsNullOrWhiteSpace(zhanr))
+                        {
+                            Console.WriteLine("Пустой запрос!");
+                            break;
+                        }
+
+                        List<Thing> result3 = tovary.Where(k => k.category.ToString().ToLower().Contains(zhanr.ToLower())).ToList();
+
+                        if (result3.Count == 0)
+                        {
+                            Console.WriteLine("Ничего не найдено.");
+                        }
+                        else
+                        {
+                            foreach (Thing t in result3)
+                            {
+                                t.ShowInfo();
+                                Console.WriteLine();
+                            }
+                        }
 
                         break;
 
