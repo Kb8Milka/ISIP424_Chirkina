@@ -42,8 +42,10 @@ namespace ISIP424_Chirkina
                 Console.WriteLine("2. Удалить книгу по индификатору");
                 Console.WriteLine("3. Отсортировать по названию или году");
                 Console.WriteLine("4. Вывод самой дорогой и дешевой");
-                Console.WriteLine("5. Поиск книги (по коду, названию и жанру)");
-                Console.WriteLine("6. Сгруппировать книги по авторам и вывести количество книг каждого автора");
+                Console.WriteLine("5. Поиск книги по коду");
+                Console.WriteLine("6. Поиск книги по названию");
+                Console.WriteLine("7. Поиск книги по жанру");
+                Console.WriteLine("8. Сгруппировать книги по авторам и вывести количество книг каждого автора");
                 Console.WriteLine("0. Выход");
                 Console.WriteLine();
                 Console.WriteLine("Выберете пункт: ");
@@ -264,58 +266,39 @@ namespace ISIP424_Chirkina
                         break;
 
                     case 5:
-                        // Поиск книги (по коду, названию и жанру) +
+                        // Поиск книги
                         Console.WriteLine();
-                        Console.Write("Введите код, название или категорию: ");
-
+                        Console.Write("Введите код: ");
                         string search = Console.ReadLine();
 
-                        if (string.IsNullOrWhiteSpace(search))
-                        {
-                            Console.WriteLine("Пустой запрос!");
-                            break;
-                        }
-
-                        bool found = false;
-
-                        foreach (Thing t in tovary)
-                        {
-                            bool sovpadenie = false;
-
-                            // ищем по коду
-                            if (t.ID.ToString() == search)
-                            {
-                                sovpadenie = true;
-                            }
-
-                            // ищем по названию
-                            if (t.name.ToLower() == search.ToLower())
-                            {
-                                sovpadenie = true;
-                            }
-
-                            // ищем по категории
-                            if (t.category.ToString().ToLower() == search.ToLower())
-                            {
-                                sovpadenie = true;
-                            }
-
-                            if (sovpadenie)
-                            {
-                                Console.WriteLine();
-                                t.ShowInfo();
-                                found = true;
-                            }
-                        }
-
-                        if (found == false)
-                        {
-                            Console.WriteLine("Ничего не найдено.");
-                        }
+                        // поиск по коду
+                        List<Thing> tovary = tovary.OrderBy(t => t.ID).ToList();
 
                         break;
 
                     case 6:
+                        // Поиск книги
+                        Console.WriteLine();
+                        Console.Write("Введите код: ");
+                        string search = Console.ReadLine();
+
+                        // поиск по названию
+                        List<Thing> tovary = tovary.OrderBy(t => t.ID).ToList();
+
+                        break;
+
+                    case 7:
+                        // Поиск книги
+                        Console.WriteLine();
+                        Console.Write("Введите код: ");
+                        string search = Console.ReadLine();
+
+                        // поиск по жанру
+                        List<Thing> tovary = tovary.OrderBy(t => t.ID).ToList();
+
+                        break;
+
+                    case 8:
                         // Сгруппировать книги по авторам и вывести количество книг каждого автора +
                         Console.WriteLine();
 
