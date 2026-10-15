@@ -76,6 +76,101 @@ namespace ISIP424_Chirkina
         }
 
         // Добавления студентов, преподов, курсов:
+        static void AddStudent()
+        {
+            Student s = new Student();
+
+            Console.Write("Имя: ");
+            s.Name = Console.ReadLine();
+            if (s.Name == "")
+            {
+                Console.WriteLine("Имя не может быть пустым!");
+                return;
+            }
+
+            Console.Write("Возраст: ");
+            if (!int.TryParse(Console.ReadLine(), out s.Age) || s.Age <= 0)
+            {
+                Console.WriteLine("Возраст должен быть положительным числом!");
+                return;
+            }
+
+            Console.Write("Группа: ");
+            s.Group = Console.ReadLine();
+            if (s.Group == "")
+            {
+                Console.WriteLine("Группа не может быть пустой!");
+                return;
+            }
+
+            students.Add(s);
+            Console.WriteLine("Студент добавлен!");
+        }
+
+        static void AddTeacher()
+        {
+            Teacher t = new Teacher();
+
+            Console.Write("Имя: ");
+            t.Name = Console.ReadLine();
+            if (t.Name == "")
+            {
+                Console.WriteLine("Имя не может быть пустым!");
+                return;
+            }
+
+            Console.Write("Возраст: ");
+            if (!int.TryParse(Console.ReadLine(), out t.Age) || t.Age <= 0)
+            {
+                Console.WriteLine("Возраст должен быть положительным числом!");
+                return;
+            }
+
+            Console.Write("Предмет: ");
+            t.Subject = Console.ReadLine();
+            if (t.Subject == "")
+            {
+                Console.WriteLine("Предмет не может быть пустым!");
+                return;
+            }
+
+            teachers.Add(t);
+            Console.WriteLine("Преподаватель добавлен!");
+        }
+
+        static void AddCourse()
+        {
+            if (teachers.Count == 0)
+            {
+                Console.WriteLine("Сначала добавьте преподавателя!");
+                return;
+            }
+
+            Course c = new Course();
+
+            Console.Write("Название курса: ");
+            c.Title = Console.ReadLine();
+            if (c.Title == "")
+            {
+                Console.WriteLine("Название не может быть пустым!");
+                return;
+            }
+
+            Console.WriteLine("Выберите преподавателя:");
+            for (int i = 0; i < teachers.Count; i++)
+                Console.WriteLine((i + 1) + ". " + teachers[i].Name);
+
+            int num;
+            if (!int.TryParse(Console.ReadLine(), out num) || num < 1 || num > teachers.Count)
+            {
+                Console.WriteLine("Неверный номер!");
+                return;
+            }
+
+            c.Teacher = teachers[num - 1];
+            courses.Add(c);
+            Console.WriteLine("Курс создан!");
+        }
 
         // Классы
         // класс просто человека
