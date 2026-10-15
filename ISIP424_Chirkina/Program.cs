@@ -10,6 +10,7 @@ namespace ISIP424_Chirkina
     {
         static void Main(string[] args)
         {
+
                 while (true)
                 {
                     Console.WriteLine("ВЫБЕРИ: ");
@@ -31,31 +32,31 @@ namespace ISIP424_Chirkina
                     switch (choice)
                     {
                         case "1":
-
+                            //Добавление студента
                             break;
                         case "2":
-
+                            // Добавление препода
                             break;
                         case "3":
-
+                            // создание курса
                             break;
                         case "4":
-
+                            // записать студента на курс
                             break;
                         case "5":
-
+                            // все студенты
                             break;
                         case "6":
-
+                            // все преподы
                             break;
                         case "7":
-
+                            // все курсы
                             break;
                         case "8":
-
+                            // курсы студента
                             break;
                         case "9":
-
+                            // студенты курса
                             break;
                         case "0":
                             return;
@@ -63,12 +64,48 @@ namespace ISIP424_Chirkina
                             Console.WriteLine("Такого пункта нет!");
                             break;
                     }
-
                     Console.WriteLine();
-                    Console.WriteLine("Нажмите Enter...");
                     Console.ReadLine();
-                    Console.Clear();
                 }
+        }
+
+        // Классы
+        // класс просто человека
+        class Person
+        {
+            public string Name;
+            public int Age;
+
+            public void Print()
+            {
+                Console.WriteLine("Имя: " + Name + ", возраст: " + Age);
+            }
+        }
+
+        // класс студента
+        class Student : Person
+        {
+            public string Group;
+            public List<Course> MyCourses = new List<Course>();
+
+            public void Print()
+            {
+                Console.WriteLine(Name + ", " + Age + " лет, группа " + Group);
+            }
+        }
+
+        // Преподаватель
+        class Teacher : Person
+        {
+            public string Subject;
+        }
+
+        // курс
+        class Course
+        {
+            public string Title;
+            public Teacher Teacher;
+            public List<Student> Students = new List<Student>();
         }
     }
 }
