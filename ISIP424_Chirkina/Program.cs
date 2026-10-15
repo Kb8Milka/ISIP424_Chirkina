@@ -64,8 +64,6 @@ namespace ISIP424_Chirkina
                             Console.WriteLine("Такого пункта нет!");
                             break;
                     }
-                    Console.WriteLine();
-                    Console.ReadLine();
                 }
         }
 
