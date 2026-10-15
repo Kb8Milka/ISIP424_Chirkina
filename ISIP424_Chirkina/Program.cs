@@ -8,6 +8,11 @@ namespace ISIP424_Chirkina
 {
     internal class Program
     {
+        // Списки для хранения данных
+        static List<Student> students = new List<Student>();
+        static List<Teacher> teachers = new List<Teacher>();
+        static List<Course> courses = new List<Course>();
+
         static void Main(string[] args)
         {
 
