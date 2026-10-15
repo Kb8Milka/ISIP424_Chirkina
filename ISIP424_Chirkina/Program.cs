@@ -38,12 +38,15 @@ namespace ISIP424_Chirkina
                     {
                         case "1":
                             //Добавление студента
+                            AddStudent();
                             break;
                         case "2":
                             // Добавление препода
+                            AddTeacher();
                             break;
                         case "3":
                             // создание курса
+                            AddCourse();
                             break;
                         case "4":
                             // записать студента на курс
@@ -71,6 +74,8 @@ namespace ISIP424_Chirkina
                     }
                 }
         }
+
+        // Добавления студентов, преподов, курсов:
 
         // Классы
         // класс просто человека
