@@ -20,7 +20,7 @@ namespace ISIP424_Chirkina
             teachers.Add(new Teacher("Петрова А.С.", 38, "Программирование"));
             teachers.Add(new Teacher("Сидоров П.В.", 52, "Физика"));
 
-            // 3 курса (каждому - свой преподаватель из списка выше)
+            // 3 курса
             courses.Add(new Course("Алгебра", teachers[0]));
             courses.Add(new Course("Основы C#", teachers[1]));
             courses.Add(new Course("Механика", teachers[2]));
