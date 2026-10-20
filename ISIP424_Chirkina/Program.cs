@@ -15,6 +15,31 @@ namespace ISIP424_Chirkina
 
         static void Main(string[] args)
         {
+            // 3 преподавателя
+            teachers.Add(new Teacher("Иванов И.И.", 45, "Математика"));
+            teachers.Add(new Teacher("Петрова А.С.", 38, "Программирование"));
+            teachers.Add(new Teacher("Сидоров П.В.", 52, "Физика"));
+
+            // 3 курса (каждому - свой преподаватель из списка выше)
+            courses.Add(new Course("Алгебра", teachers[0]));
+            courses.Add(new Course("Основы C#", teachers[1]));
+            courses.Add(new Course("Механика", teachers[2]));
+
+            // 3 студента
+            students.Add(new Student("Смирнова А.К.", 19, "ИТ-101"));
+            students.Add(new Student("Козлов Д.М.", 20, "ИТ-101"));
+            students.Add(new Student("Волкова Е.Н.", 18, "ИТ-102"));
+
+            students[0].MyCourses.Add(courses[1]); // Смирнова -> Основы C#
+            courses[1].Students.Add(students[0]);
+
+            students[1].MyCourses.Add(courses[1]); // Козлов -> Основы C#
+            courses[1].Students.Add(students[1]);
+            students[1].MyCourses.Add(courses[0]); // Козлов -> Алгебра
+            courses[0].Students.Add(students[1]);
+
+            students[2].MyCourses.Add(courses[2]); // Волкова -> Механика
+            courses[2].Students.Add(students[2]);
 
             while (true)
             {
@@ -84,68 +109,63 @@ namespace ISIP424_Chirkina
         // Добавления студентов, преподов, курсов:
         static void AddStudent()
         {
-            // Создаём пустого студента, будем заполнять его поля
-            Student s = new Student();
-
-            // заполняем имя
             Console.Write("Имя: ");
-            s.Name = Console.ReadLine();
-            if (s.Name == "")
+            string name = Console.ReadLine();
+            if (name == "")
             {
                 Console.WriteLine("Имя не может быть пустым!");
                 return;
             }
 
-            //возраст
             Console.Write("Возраст: ");
-            if (!int.TryParse(Console.ReadLine(), out s.Age) || s.Age <= 0)
+            int age;
+            if (!int.TryParse(Console.ReadLine(), out age) || age <= 0)
             {
                 Console.WriteLine("Возраст должен быть положительным числом!");
                 return;
             }
 
-            // группа
             Console.Write("Группа: ");
-            s.Group = Console.ReadLine();
-            if (s.Group == "")
+            string group = Console.ReadLine();
+            if (group == "")
             {
                 Console.WriteLine("Группа не может быть пустой!");
                 return;
             }
 
-            //добавление студента
-            students.Add(s);
+            // создаём студента только когда все данные проверены
+            students.Add(new Student(name, age, group));
             Console.WriteLine("Студент добавлен!");
         }
 
         static void AddTeacher()
         {
-            Teacher t = new Teacher();
-
             Console.Write("Имя: ");
-            t.Name = Console.ReadLine();
-            if (t.Name == "")
+            string name = Console.ReadLine();
+            if (name == "")
             {
                 Console.WriteLine("Имя не может быть пустым!");
                 return;
             }
 
             Console.Write("Возраст: ");
-            if (!int.TryParse(Console.ReadLine(), out t.Age) || t.Age <= 0)
+            int age;
+            if (!int.TryParse(Console.ReadLine(), out age) || age <= 0)
             {
                 Console.WriteLine("Возраст должен быть положительным числом!");
                 return;
             }
 
             Console.Write("Предмет: ");
-            t.Subject = Console.ReadLine();
-            if (t.Subject == "")
+            string subject = Console.ReadLine();
+            if (subject == "")
             {
                 Console.WriteLine("Предмет не может быть пустым!");
                 return;
             }
 
-            teachers.Add(t);
+            // создаём преподавателя только когда все данные проверены
+            teachers.Add(new Teacher(name, age, subject));
             Console.WriteLine("Преподаватель добавлен!");
         }
 
@@ -157,11 +177,9 @@ namespace ISIP424_Chirkina
                 return;
             }
 
-            Course c = new Course();
-
             Console.Write("Название курса: ");
-            c.Title = Console.ReadLine();
-            if (c.Title == "")
+            string title = Console.ReadLine();
+            if (title == "")
             {
                 Console.WriteLine("Название не может быть пустым!");
                 return;
@@ -178,8 +196,8 @@ namespace ISIP424_Chirkina
                 return;
             }
 
-            c.Teacher = teachers[num - 1];
-            courses.Add(c);
+            // создаём курс сразу с названием и выбранным преподавателем
+            courses.Add(new Course(title, teachers[num - 1]));
             Console.WriteLine("Курс создан!");
         }
 
@@ -323,10 +341,17 @@ namespace ISIP424_Chirkina
 
         // Классы
         // класс просто человека
+        // класс просто человека
         class Person
         {
             public string Name;
             public int Age;
+
+            public Person(string name, int age)
+            {
+                Name = name;
+                Age = age;
+            }
 
             public void Print()
             {
@@ -340,6 +365,11 @@ namespace ISIP424_Chirkina
             public string Group;
             public List<Course> MyCourses = new List<Course>();
 
+            public Student(string name, int age, string group) : base(name, age)
+            {
+                Group = group;
+            }
+
             public void Print()
             {
                 Console.WriteLine(Name + ", " + Age + " лет, группа " + Group);
@@ -350,6 +380,11 @@ namespace ISIP424_Chirkina
         class Teacher : Person
         {
             public string Subject;
+
+            public Teacher(string name, int age, string subject) : base(name, age)
+            {
+                Subject = subject;
+            }
         }
 
         // курс
@@ -358,6 +393,12 @@ namespace ISIP424_Chirkina
             public string Title;
             public Teacher Teacher;
             public List<Student> Students = new List<Student>();
+
+            public Course(string title, Teacher teacher)
+            {
+                Title = title;
+                Teacher = teacher;
+            }
         }
     }
 }
