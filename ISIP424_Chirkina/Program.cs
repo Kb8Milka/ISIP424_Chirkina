@@ -30,6 +30,7 @@ namespace ISIP424_Chirkina
             students.Add(new Student("Козлов Д.М.", 20, "ИТ-101"));
             students.Add(new Student("Волкова Е.Н.", 18, "ИТ-102"));
 
+            // Добавляем студентов на курс
             students[0].MyCourses.Add(courses[1]); // Смирнова -> Основы C#
             courses[1].Students.Add(students[0]);
 
