@@ -134,7 +134,7 @@ namespace ISIP424_Chirkina
                 return;
             }
 
-            // создаём студента только когда все данные проверены
+            // создаём студента
             students.Add(new Student(name, age, group));
             Console.WriteLine("Студент добавлен!");
         }
@@ -165,7 +165,7 @@ namespace ISIP424_Chirkina
                 return;
             }
 
-            // создаём преподавателя только когда все данные проверены
+            // создаём преподавателя
             teachers.Add(new Teacher(name, age, subject));
             Console.WriteLine("Преподаватель добавлен!");
         }
@@ -341,7 +341,6 @@ namespace ISIP424_Chirkina
         }
 
         // Классы
-        // класс просто человека
         // класс просто человека
         class Person
         {
