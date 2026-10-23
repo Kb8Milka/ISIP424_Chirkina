@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ISIP424_Chirkina
+{
+    internal class Core
+    {
+        public static chirEntities Context = new chirEntities();
+    }
+}

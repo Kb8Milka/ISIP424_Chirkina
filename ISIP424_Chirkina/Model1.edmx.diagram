@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6fa0d0bb24434ba18afdeb6813329209" Name="Diagram1">
+        <EntityTypeShape EntityType="chirModel.Basket" Width="1.5" PointX="3.125" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="chirModel.Pickup" Width="1.5" PointX="3.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="chirModel.Product" Width="1.5" PointX="0.875" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="chirModel.PVZ" Width="1.5" PointX="7.375" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="chirModel.User" Width="1.5" PointX="5.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="chirModel.History" Width="1.5" PointX="5.375" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="chirModel.FK_Basket_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="chirModel.FK_Basket_User" ManuallyRouted="false" />
+        <AssociationConnector Association="chirModel.FK_History_Pickup" ManuallyRouted="false" />
+        <AssociationConnector Association="chirModel.FK_Pickup_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="chirModel.FK_History_User" ManuallyRouted="false" />
+        <AssociationConnector Association="chirModel.FK_History_PVZ" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
