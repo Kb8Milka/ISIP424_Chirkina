@@ -41,9 +41,18 @@ namespace ISIP424_Chirkina
                     int bossRoll = rand.Next(4);
                     Enemy boss = null;
 
-                    if (bossRoll == 0) boss = new VvgBoss();
-                    else if (bossRoll == 1) boss = new KowalskiBoss();
-                    else if (bossRoll == 2) boss = new ArchmageBoss();
+                    if (bossRoll == 0)
+                    {
+                        boss = new VvgBoss();
+                    }
+                    else if (bossRoll == 1)
+                    {
+                        boss = new KowalskiBoss();
+                    }
+                    else if (bossRoll == 2)
+                    {
+                        boss = new ArchmageBoss();
+                    }
                     else boss = new PestovBoss();
 
                     Fight(ref playerHp, playerAttack, playerDefense, currentWeapon, boss, rand);
